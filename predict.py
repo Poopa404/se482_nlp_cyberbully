@@ -2,12 +2,13 @@ import streamlit as st
 import pickle
 import warnings
 import pandas as pd
+import nltk
+nltk.download('punkt')
 from nltk.stem import PorterStemmer
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from ordered_set import OrderedSet
 import re
-nltk.download('punkt')
 
 warnings.filterwarnings('ignore')
 from PIL import Image
