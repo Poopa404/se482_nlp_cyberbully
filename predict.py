@@ -7,6 +7,7 @@ from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from ordered_set import OrderedSet
 import re
+nltk.download('punkt')
 
 warnings.filterwarnings('ignore')
 from PIL import Image
