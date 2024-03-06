@@ -51,7 +51,7 @@ def app():
     svm_result = ''
 
     if st.button('Click here to predict'):
-        cleaned_text = feature_extraction_selection([text])
+        cleaned_text = feature_extraction_selection([clean_text(text)])
         dtc_result = dtc_model.predict(cleaned_text)
         knn_result = knn_model.predict(cleaned_text)
         nb_result = nb_model.predict(cleaned_text)
