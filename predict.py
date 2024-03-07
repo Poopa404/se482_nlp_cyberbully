@@ -10,7 +10,7 @@ import re
 
 import nltk
 nltk.download('punkt')
-nltk.download('stopwords')
+# nltk.download('stopwords')
 
 warnings.filterwarnings('ignore')
 from PIL import Image
@@ -23,7 +23,7 @@ knn_model = pickle.load(open('resources/knn_model.pkl','rb'))
 nb_model = pickle.load(open('resources/nb_model.pkl','rb'))
 svm_model = pickle.load(open('resources/svm_model.pkl','rb'))
 
-stop_dict = set(stopwords.words('English'))
+# stop_dict = set(stopwords.words('English'))
 
 def clean_text(text):
     ps = PorterStemmer()
@@ -33,7 +33,7 @@ def clean_text(text):
     t = t.lower()
     t = t.strip()
     t = word_tokenize(t)
-    t = list(OrderedSet(t) - stop_dict)
+    # t = list(OrderedSet(t) - stop_dict)
     t = [word for word in t if len(word)>2]
     t = [ps.stem(w) for w in t]
     t = ' '.join(t)
@@ -43,9 +43,10 @@ def clean_text(text):
 def feature_extraction_selection(text):
     tf_idf_df = tf_idf_vect.transform(text)
     tf_idf_df = pd.DataFrame.sparse.from_spmatrix(tf_idf_df,columns=tf_idf_vect.get_feature_names_out())
-    var_df = tf_idf_df[var_thr.get_feature_names_out()]
+    tf_idf_df = tf_idf_df[tf_idf_vect.get_feature_names_out()]
+    # var_df = tf_idf_df[var_thr.get_feature_names_out()]
 
-    return var_df
+    return tf_idf_df
 
 def app():
     text = st.text_input('text','')
