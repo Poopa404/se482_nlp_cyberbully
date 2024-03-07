@@ -27,8 +27,8 @@ def clean_text(text):
     t = t.lower()
     t = t.strip()
     t = word_tokenize(t)
-    stop_dict = set(stopwords.words('English'))
-    t = list(OrderedSet(t) - stop_dict)
+    # stop_dict = set(stopwords.words('English'))
+    # t = list(OrderedSet(t) - stop_dict)
     t = [word for word in t if len(word)>2]
     t = [ps.stem(w) for w in t]
     t = ' '.join(t)
@@ -38,9 +38,9 @@ def clean_text(text):
 def feature_extraction_selection(text):
     tf_idf_df = tf_idf_vect.transform(text)
     tf_idf_df = pd.DataFrame(tf_idf_df.toarray(),columns=tf_idf_vect.get_feature_names_out())
-    var_df = tf_idf_df[var_thr.get_feature_names_out()]
-
-    return var_df
+    # var_df = tf_idf_df[var_thr.get_feature_names_out()]
+    tf_idf_df = tf_idf_df[tf_idf_vect.get_feature_names_out()]
+    return tf_idf_df
 
 def app():
     text = st.text_input('text','')
