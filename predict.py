@@ -58,9 +58,13 @@ def app():
 
     if st.button('Click here to predict'):
         cleaned_text = feature_extraction_selection([clean_text(text)])
+        print('dtc')
         dtc_result = dtc_model.predict(cleaned_text)
+        print('knn')
         knn_result = knn_model.predict(cleaned_text)
+        print('nb')
         nb_result = nb_model.predict(cleaned_text)
+        print('svm')
         svm_result = svm_model.predict(cleaned_text)
         st.balloons()
     st.success('Decision Tree Classifier: {}'.format(dtc_result))
