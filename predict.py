@@ -42,7 +42,7 @@ def clean_text(text):
 
 def feature_extraction_selection(text):
     tf_idf_df = tf_idf_vect.transform(text)
-    tf_idf_df = pd.DataFrame(tf_idf_df.toarray(),columns=tf_idf_vect.get_feature_names_out())
+    tf_idf_df = pd.DataFrame.sparse.from_spmatrix(tf_idf_df,columns=tf_idf_vect.get_feature_names_out())
     var_df = tf_idf_df[var_thr.get_feature_names_out()]
 
     return var_df
