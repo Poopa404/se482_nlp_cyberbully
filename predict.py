@@ -18,7 +18,7 @@ from PIL import Image
 tf_idf_vect = pickle.load(open('resources/tfidf_vect.pkl','rb'))
 var_thr = pickle.load(open('resources/var_thr.pkl','rb'))
 
-dtc_model = pickle.load(open('resources/dtc_model.pkl','rb'))
+# dtc_model = pickle.load(open('resources/dtc_model.pkl','rb'))
 knn_model = pickle.load(open('resources/knn_model.pkl','rb'))
 nb_model = pickle.load(open('resources/nb_model.pkl','rb'))
 svm_model = pickle.load(open('resources/svm_model.pkl','rb'))
@@ -57,7 +57,7 @@ def app():
 
     if st.button('Click here to predict'):
         cleaned_text = feature_extraction_selection([clean_text(text)])
-        dtc_result = dtc_model.predict(cleaned_text)
+        # dtc_result = dtc_model.predict(cleaned_text)
         knn_result = knn_model.predict(cleaned_text)
         nb_result = nb_model.predict(cleaned_text)
         svm_result = svm_model.predict(cleaned_text)
