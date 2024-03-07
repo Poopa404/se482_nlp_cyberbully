@@ -22,6 +22,8 @@ knn_model = pickle.load(open('resources/knn_model.pkl','rb'))
 nb_model = pickle.load(open('resources/nb_model.pkl','rb'))
 svm_model = pickle.load(open('resources/svm_model.pkl','rb'))
 
+stop_dict = set(stopwords.words('English'))
+
 def clean_text(text):
     ps = PorterStemmer()
     t = text
@@ -30,7 +32,6 @@ def clean_text(text):
     t = t.lower()
     t = t.strip()
     t = word_tokenize(t)
-    stop_dict = set(stopwords.words('English'))
     t = list(OrderedSet(t) - stop_dict)
     t = [word for word in t if len(word)>2]
     t = [ps.stem(w) for w in t]
